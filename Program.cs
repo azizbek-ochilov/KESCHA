@@ -11,4 +11,18 @@ int age = Convert.ToInt32(ageAsString);
 System.Console.WriteLine($"Successfully converted {age}");
 int keschasAge = 3;
 int ageDifference= age- keschasAge;
+
 System.Console.WriteLine($"The difference your and Kescha's age is {ageDifference}");
+
+if(age > keschasAge)
+{
+    System.Console.WriteLine("You are older!");
+}
+else if(age == keschasAge)
+{
+    System.Console.WriteLine("You are equal");
+}
+else
+{
+    System.Console.WriteLine("You are younger!");
+}
