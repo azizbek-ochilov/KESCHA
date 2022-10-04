@@ -26,3 +26,13 @@ else
 {
     System.Console.WriteLine("You are younger!");
 }
+
+string[] friendsName = new string[3];
+friendsName[0] = "Kasse";
+friendsName[1] = "Valya";
+friendsName[2] = name;
+int[] friendsAge = {2,1,age};
+for(int i=0; i<friendsName.Length;i++)
+{
+    System.Console.WriteLine($"{friendsName[i]} is {friendsAge[i]} years old.");
+}
