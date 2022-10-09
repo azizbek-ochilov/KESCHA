@@ -1,63 +1,66 @@
 namespace KESCHA.Classes
 {
-    public class Animal
+    public abstract class Animal
     {
-        public string Name { get; set; }
-        public int Age { get; set; }
-        public int AgeDifference { get; set; }
-        public Animal()
+        public int UserAge { get; set; }
+        public int AnimalAge { get; set; }
+        public string UserName { get; set; }
+        public string AnimalName { get; set; }
+        public Animal(string name, int age)
         {
-            Name = "No name";
-            Age = 0;
-            AgeDifference = 0;
+            AnimalName = name;
+            AnimalAge = age;
         }
         
-        public Animal(string name, int userAge, int animalAge)
-        {
-            Name = name;
-            Age = animalAge;
-            ClaculateAgeDifferenceWithNoReturn(userAge, Age);
+        public virtual void Greeting()
+        {   
+            Console.WriteLine("Enter your name:");
+            UserName = Console.ReadLine();
+            System.Console.WriteLine($"{AnimalName} says:");
+            string greeting = $"Hello {UserName}!";
+            Console.WriteLine(greeting);
         }
-        public void PrintAgeDifference()
+        public abstract string  ReturnName(string UserName);
+        
+        public void GetInputs()
         {
-            Console.WriteLine($"The difference your and {Name} age is {AgeDifference}");
+            Console.WriteLine("Enter your age:");
+            UserAge = Convert.ToInt32(Console.ReadLine());
         }
-        public void CompareAges(int userAge)
+        public int AgeDifference()
         {
-            if(userAge > Age)
+            return UserAge-AnimalAge;
+        }
+        public void CalculateAgeDifference()
+        {
+            System.Console.WriteLine($"The differnce {AnimalAge} and {UserName}'s is {AgeDifference()} years.");
+        }
+        public void CompareAges()
+        {
+            if (UserAge > AnimalAge)
             {
-                System.Console.WriteLine("You are older!");
+                Console.WriteLine("You are older!");
             }
-            else if(userAge == Age)
+            else if (UserAge == AnimalAge)
             {
-                System.Console.WriteLine("You are equal");
+                Console.WriteLine("You are equal");
             }
             else
             {
-                System.Console.WriteLine("You are younger!");
+                Console.WriteLine("You are younger!");
             }
         }
-        public void TellAboutFriends(string userName, int userAge)
+        public void TellAboutFriends()
         {
             string[] friendsName = new string[3];
             friendsName[0] = "Kasse";
             friendsName[1] = "Valya";
-            friendsName[2] = userName;
-            int[] friendsAge = {2,1,userAge};
-            for(int i=0; i<friendsName.Length;i++)
+            friendsName[2] = UserName;
+            int[] friendsAge = { 2, 1, UserAge };
+            for (int i = 0; i < friendsName.Length; i++)
             {
-                System.Console.WriteLine($"{friendsName[i]} is {friendsAge[i]} years old.");
+                Console.WriteLine($"{friendsName[i]} is {friendsAge[i]} years old.");
             }
         }
-        
-        private int ClaculateAgeDifference(int userAge, int Age)
-        {
-            return userAge - Age;
-        }
-        
-        private void ClaculateAgeDifferenceWithNoReturn(int userAge, int Age)
-        {
-            AgeDifference = userAge-Age;
-        }
-    }   
+    }
 }

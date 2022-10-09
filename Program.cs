@@ -1,18 +1,29 @@
 ﻿using System;
 using KESCHA.Classes;
-System.Console.WriteLine("Enter your name:");
-string name = Console.ReadLine();
-string greeting = $"Hello {name}!";
-System.Console.WriteLine(greeting);
+internal class Program
+{
+    public static void Main(string[] args)
+    {
+        try
+        {
+            Animal kescha = new Bird("Birdy", 5);
+            Animal maysa = new Pet("Maysa", 6);
+            kescha.Greeting();
+            maysa.Greeting();
+            kescha.GetInputs();
+            kescha.CalculateAgeDifference();
+            kescha.CompareAges();
+            kescha.TellAboutFriends();   
+        }
+        catch(FormatException formatException)
+        {
+            System.Console.WriteLine($" Error detected: {formatException.Message}");
+        }
+        catch (Exception exception)
+        {
+            System.Console.WriteLine("Error was detected but type is unknown!");
+        }
+        System.Console.WriteLine("Program ended...");
 
-System.Console.WriteLine("Enter your age:");
-string ageAsString = Console.ReadLine();
-System.Console.WriteLine("Converting...");
-int age = Convert.ToInt32(ageAsString);
-System.Console.WriteLine($"Successfully converted {age}");
-
-Animal kescha = new Animal(name:"Kescha", userAge:age, animalAge:3);
-kescha.PrintAgeDifference();
-kescha.CompareAges(age);
-kescha.TellAboutFriends(userName:name, userAge:age);
-
+    }
+}
